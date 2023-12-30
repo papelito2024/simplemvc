@@ -1,0 +1,16 @@
+RewriteEngine On
+#RewriteBase /tuSutioLocal  #Si está en un servidor local
+#RewriteBase / # Descomente está línea si está en un servicio de hosting
+               # y comente la línea para servidor local
+# La siguiente regla indica al servidor Apache que si el archivo solicitado
+# existe debe servirlo normalmente.
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [L]
+# La regla siguiente toma todas las solicitudes a recursos inexistentes 
+# en particular las direcciones amigables y las redirige a index.php
+# ello asegura que sea la única puerta de entrada a la aplicación.    
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+RewriteRule ^(.*) - [E=BASE:%1]
+RewriteRule ^(.*)$ %{ENV:BASE}/index.php [L]

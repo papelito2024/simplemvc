@@ -1,9 +1,9 @@
 <?php
 
-namespace core\http\request;
+namespace core\http\response;
 
 
-class Request{
+class Response{
 
     
     public function getRequestMethod(){

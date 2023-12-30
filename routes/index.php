@@ -9,8 +9,13 @@ use core\router\Route;
 $route = new Route;
 
 
-$route->get("/",midleware(),midleware(),midleware(),handler());
+$route->get("/",function($req,$res){
+    
+    echo "asasd";
+});
 
 
+
+return $route;
 
 

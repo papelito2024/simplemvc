@@ -4,7 +4,8 @@
 namespace core ;
 
 use core\Autoloader;
-
+use models\User;
+use core\router\Router;
 
 class Application{
 
@@ -14,8 +15,21 @@ class Application{
     */
     public static function run(){
 
-        
-        Autoloader::register();
+        //$storange = new Storange("database");
+        try {
+            //code...
+            
+            $u = new User("user");
+    
+
+            $r = new Router;
+
+            $r->route();
+
+        } catch (\Throwable $th) {
+            echo $th->getMessage().$th->getLine();
+            exit;
+        }
     }
 
 }
