@@ -3,9 +3,10 @@
 
 namespace core ;
 
-use core\Autoloader;
+
 use models\User;
 use core\router\Router;
+use core\errors\exceptions\RouterException;
 
 class Application{
 
@@ -24,11 +25,15 @@ class Application{
 
             $r = new Router;
 
+            //throw new RouterException("Error Processing Request", 1);
+            
+
             $r->route();
 
-        } catch (\Throwable $th) {
-            echo $th->getMessage().$th->getLine();
-            exit;
+        } catch (RouterException $th) {
+           
+            $th->handle();
+
         }
     }
 

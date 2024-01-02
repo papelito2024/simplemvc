@@ -3,7 +3,7 @@
 
 
 use core\router\Route;
-
+defined("ROOT_PATH");
 
 
 $route = new Route;
@@ -11,7 +11,8 @@ $route = new Route;
 
 $route->get("/",function($req,$res){
     
-    echo "asasd";
+        echo ROOT_PATH;
+   $res->send("index.html");
 });
 
 

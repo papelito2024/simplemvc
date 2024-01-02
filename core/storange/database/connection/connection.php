@@ -6,9 +6,6 @@ use core\storange\database\connection\PDOConnection;
 
 class Connection{
     
-    /**
-     * 
-     */
 
     /**
      * to avoide to create multiple connection objects
@@ -22,7 +19,7 @@ class Connection{
     }
 
     /**
-     * this method takes wich type o data base we want to instance 
+     * this method takes wich type o database we want to instance 
      * and returns an instance of the connection 
      */
 
@@ -31,7 +28,7 @@ class Connection{
         if(self::$instance) return self::$instance;
         
         switch ($database) {
-            case 'mysql':
+            case 'pdo':
                 $conn = new PDOConnection();
                 self::$instance=$conn->getConnection(); 
 
